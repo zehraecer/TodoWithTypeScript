@@ -8,8 +8,7 @@ import { increment, incrementByAmount } from './redux/counterSlice'
 function App() {
 
   const count = useSelector((state: RootState) => state.counter.value)
-  const todolar = useSelector((state: RootState) => state.counter.todos)
-  console.log(todolar);
+
 
   const dispatch = useDispatch()
   console.log(count);
@@ -18,11 +17,6 @@ function App() {
     <>
       <NewTodo />
       <Todos />
-      <button aria-label="Increment value"
-        onClick={() => dispatch(increment())}>artır</button>
-      <span>{count}</span>
-      <button aria-label="Increment value"
-        onClick={() => dispatch(incrementByAmount(8))}>eksilt</button>
     </>
   )
 }

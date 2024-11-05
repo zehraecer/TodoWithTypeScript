@@ -2,14 +2,14 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 
-interface todosType {
+interface TodosType {
     id: number,
     title: string,
     isClicked: boolean
 }
 export interface CounterState {
     value: number,
-    todos: todosType[]
+    todos: TodosType[]
 }
 
 const initialState: CounterState = {
@@ -46,13 +46,24 @@ export const counterSlice = createSlice({
         incrementByAmount: (state, action: PayloadAction<number>) => {
             state.value += action.payload
         },
-        deneme: (state) => {
-            state.value = 0
+        addTodo: (state, action: PayloadAction<string>) => {
+            const newTodo: TodosType = {
+                id: state.todos.length + 1,
+                title: action.payload,
+                isClicked: false
+            }
+            state.todos.push(newTodo)
+        },
+        deleteTodo: (state, action: PayloadAction<number>) => {
+            const newTodo = state.todos.filter(todo => todo.id !== action.payload)
+            if (newTodo) {
+                state.todos = newTodo
+            }
         }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, deneme } = counterSlice.actions
+export const { increment, decrement, incrementByAmount, addTodo, deleteTodo } = counterSlice.actions
 
 export default counterSlice.reducer
