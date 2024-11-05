@@ -3,7 +3,6 @@ import './App.css'
 import { NewTodo } from './components/newTodo'
 import { Todos } from './components/todos'
 import { RootState } from './redux/store'
-import { increment, incrementByAmount } from './redux/counterSlice'
 
 function App() {
 

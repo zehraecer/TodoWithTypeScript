@@ -59,11 +59,21 @@ export const counterSlice = createSlice({
             if (newTodo) {
                 state.todos = newTodo
             }
+        },
+        updateTodo: (state, action: PayloadAction<number>) => {
+
+            const newTip = prompt("ne ile değiştirmek isteresiniz") || ""
+            state.todos.find(todo => {
+                if (todo.id === action.payload) {
+                    todo.title = newTip
+                }
+
+            })
         }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, addTodo, deleteTodo } = counterSlice.actions
+export const { increment, decrement, incrementByAmount, addTodo, deleteTodo, updateTodo } = counterSlice.actions
 
 export default counterSlice.reducer

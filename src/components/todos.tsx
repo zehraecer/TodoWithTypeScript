@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-import { deleteTodo } from "../redux/counterSlice";
+import { deleteTodo, updateTodo } from "../redux/counterSlice";
 
 export const Todos: React.FC = () => {
 
@@ -11,10 +11,14 @@ export const Todos: React.FC = () => {
     const DeleteBtn = (id: number) => {
         dispatch(deleteTodo(id))
     }
+
+    const UpdateBtn = (id: number) => {
+        dispatch(updateTodo(id))
+    }
     return (
         <>
             {todolar.map(todo => (
-                <div key={todo.id}>{todo.title} - <span onClick={() => DeleteBtn(todo.id)}>Sil</span></div>
+                <div key={todo.id}>{todo.title} - <span onClick={() => DeleteBtn(todo.id)}>Sil</span> - <span onClick={() => UpdateBtn(todo.id)}>Düzenle</span></div>
             ))}
         </>
     )
