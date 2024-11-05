@@ -50,7 +50,7 @@ export const counterSlice = createSlice({
             const newTodo: TodosType = {
                 id: state.todos.length + 1,
                 title: action.payload,
-                isClicked: false
+                isClicked: true
             }
             state.todos.push(newTodo)
         },
@@ -69,11 +69,22 @@ export const counterSlice = createSlice({
                 }
 
             })
+        },
+        completedTodo: (state, action: PayloadAction<number>) => {
+            state.todos.find(todo => {
+                if (todo.id === action.payload) {
+                    todo.isClicked = false
+                } else {
+                    // todo.isClicked = true 
+                }
+
+            })
+
         }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, addTodo, deleteTodo, updateTodo } = counterSlice.actions
+export const { increment, decrement, incrementByAmount, addTodo, deleteTodo, updateTodo, completedTodo } = counterSlice.actions
 
 export default counterSlice.reducer
