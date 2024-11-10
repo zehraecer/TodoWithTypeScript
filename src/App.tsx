@@ -13,13 +13,14 @@ function App() {
   console.log(count);
   console.log(dispatch);
   return (
-    <>
-      <NewTodo />
-      <Todos />
-      <h1 className="bg-blue-500 text-white p-4">
-        Hello world!
-      </h1>
-    </>
+    <div className='flex flex-col justify-center items-center min-h-screen w-full'>
+      <div className=''>
+        <NewTodo />
+      </div>
+      <div className='flex flex-col  mt-10 '>
+        <Todos />
+      </div>
+    </div>
   )
 }
 

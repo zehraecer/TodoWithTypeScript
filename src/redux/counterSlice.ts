@@ -17,18 +17,18 @@ const initialState: CounterState = {
     todos: [
         {
             id: 1,
-            title: "saygınlık",
-            isClicked: true
+            title: "İş bulunacak",
+            isClicked: false
         },
         {
             id: 2,
-            title: "evlen",
-            isClicked: true
+            title: "Evlen",
+            isClicked: false
         },
         {
             id: 3,
-            title: "iş buluncak",
-            isClicked: true
+            title: "Saygınlık",
+            isClicked: false
         }
     ]
 }
@@ -50,7 +50,7 @@ export const counterSlice = createSlice({
             const newTodo: TodosType = {
                 id: state.todos.length + 1,
                 title: action.payload,
-                isClicked: true
+                isClicked: false
             }
             state.todos.push(newTodo)
         },
@@ -73,9 +73,12 @@ export const counterSlice = createSlice({
         completedTodo: (state, action: PayloadAction<number>) => {
             state.todos.find(todo => {
                 if (todo.id === action.payload) {
-                    todo.isClicked = false
-                } else {
-                    // todo.isClicked = true 
+                    if (todo.isClicked === false) {
+
+                        todo.isClicked = true
+                    } else {
+                        todo.isClicked = false
+                    }
                 }
 
             })
