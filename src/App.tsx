@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import './App.css'
+import './index.css'
 import { NewTodo } from './components/newTodo'
 import { Todos } from './components/todos'
 import { RootState } from './redux/store'
@@ -16,6 +16,9 @@ function App() {
     <>
       <NewTodo />
       <Todos />
+      <h1 className="bg-blue-500 text-white p-4">
+        Hello world!
+      </h1>
     </>
   )
 }
