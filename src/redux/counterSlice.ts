@@ -64,8 +64,10 @@ export const counterSlice = createSlice({
 
             const newTip = prompt("ne ile değiştirmek isteresiniz") || ""
             state.todos.find(todo => {
-                if (todo.id === action.payload) {
-                    todo.title = newTip
+                if (newTip !== "") {
+                    if (todo.id === action.payload) {
+                        todo.title = newTip
+                    }
                 }
 
             })
